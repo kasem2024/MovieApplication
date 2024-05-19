@@ -12,6 +12,19 @@ body{
     margin: 0;
     padding: 0;
 }
+.search{
+    width: 50%;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    
+}
+.searchInput{
+    width: 100%;
+    padding: 7px;
+    caret-color: black;
+    color: black;
+    font-size: 20px;
+}
 .heroContainer{
     display: flex;
     flex-direction: column;
@@ -28,8 +41,14 @@ body{
 z-index: 50;
 }
 .playicon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
-    background-color: white;
+    padding: 2px;
+    background-color: rgb(217, 127, 1);
+ 
+    color: white;
     border: none;
     font-size: 40px;
     cursor: pointer;
@@ -42,8 +61,8 @@ z-index: 50;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-    padding-top:10px;
-    padding-inline: 20px;
+    /* padding-top:10px; */
+    /* padding-inline: 20px; */
     position: absolute;
     bottom: 100px;
     left: 30px;
@@ -178,7 +197,7 @@ header{
     z-index: 10;
     position: fixed;
     top: 0;
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(0, 0, 0);
     color: aliceblue;
     width: 100%;
     display: flex;

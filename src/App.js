@@ -7,6 +7,7 @@ import { useState,useEffect } from 'react';
 import RenderMovies from './components/RenderMovies';
 import { useRef } from 'react';
 import YouTube from 'react-youtube'
+import { Search } from 'lucide-react';
 
 
 function App() {
@@ -48,14 +49,9 @@ function App() {
     })
     return data
   }
-
-  
     useEffect( () => {
       fetchdata()
     },[])
-  
-
-
   const handleSubmit = (e)=>{
     e.preventDefault()
     fetchdata(searchKey)
@@ -65,21 +61,16 @@ function App() {
     if (newdatatodisplay) {
       setSelectmovie(newdatatodisplay)
     }
-   
     console.log(newdatatodisplay)
       //  if (data.videos && data.videos.results) {
       //       const trailer = data.videos.results.find(vid => vid.name === "Official Trailer")
       //       setTrailer(trailer ? trailer : data.videos.results[0])
-      //   }
+      //  
       if (newdatatodisplay.videos && newdatatodisplay.videos.results){
-        const trailer = newdatatodisplay.videos.results.find(vid => vid.name === "Official Trailer")
-        
+        const trailer = newdatatodisplay.videos.results.find(vid => vid.name === "Official Trailer")   
       setTrailer(trailer ? trailer : {})
       }
-
   }
-
-
     // console.log(selectmovie)
     const handleClick = async(movie) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -91,27 +82,11 @@ function App() {
     }
     if (newdatatodisplay.videos && newdatatodisplay.videos.results){
       const trailer = newdatatodisplay.videos.results.find(vid => vid.name === "Official Trailer")
-
       setTrailer(trailer ? trailer :  {})
-      }
-// newdatatodisplay.videos.results[0]
-      //  await gettrailer(selectmovie);
-      // console.log(selectmovie.videos)
-      
+      } 
     };
-
   console.log(selectmovie)
   console.log(trailer)
-
-  // const gettrailer = async(selectmovie) => {
-  //   const trailer = await selectmovie.results[0]
-  //   return trailer
-  // }
-
-  // gettrailer()
-  
-//   //.find((vid)=>vid.name = 'Official Trailer')
-
   const opts = {
       playerVars: {
       autoplay: 1,
@@ -121,15 +96,16 @@ function App() {
   return (
     
       <div className='app'>
-        <header >
-          <h1>Hello <span className='user'>User</span></h1>
-          <form onSubmit={handleSubmit} > 
+        <header  >
+          <h1>Movies <span className='user'>Now</span></h1>
+          <form onSubmit={handleSubmit} className='search'> 
             <input
               type='text'
               required
               onChange={(e)=>setSearchKey(e.target.value)}
+              className='searchInput'
             />
-            <button type='submit'>Search</button>
+            <button type='submit'><Search /></button>
           </form>
         </header>
       <section ref={ref}>
@@ -147,9 +123,6 @@ function App() {
             </button>
           </> : null} 
           
-         
-       
-      
           <button className='playicon' onClick={()=>setIsplay(!isplay)}><AiFillPlayCircle/></button>
           <div className="maintitle">
             {selectmovie.title}
